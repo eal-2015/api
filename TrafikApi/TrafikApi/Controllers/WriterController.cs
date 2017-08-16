@@ -14,30 +14,20 @@ namespace TrafikApi.Controllers
     [Route("api/[controller]")]
     public class WriterController : Controller
     {
-        IMongoCollection<Station> Stationcollection;
-        IMongoCollection<Measurement> Measurementcollection;
+        Mongo conn;
         // POST api/values
         [HttpGet]
-        public bool InsertStation(string name, int areacode)
+        public void InsertStation(string name, int areacode)
         {
-            MongoClient client = new MongoClient("mongodb://localhost:27017");
-            IMongoDatabase database = client.GetDatabase("Flat_test"); // is made if not already there
-
-            Stationcollection = database.GetCollection<Station>("Stations"); // is made if not already there
-
-            Stationcollection.InsertOne(new Station(name, areacode));
-            return true;
+            IMongoCollection<Station> collection = conn.ConnectToStation("Flat_test", "Stations");
+            collection.InsertOne(new Station(name, areacode));
         }
         // POST api/values
         [HttpPost]
-        public void InsertMeasurement(string dateTime, string lane, string speed, string length, string type, string gap, string wrongDir, string display, string flash, string stationName)
+        public void InsertMeasurement(DateTime dateTime, string lane, string speed, string length, string type, string gap, string wrongDir, string display, string flash, string stationName)
         {
-            MongoClient client = new MongoClient("mongodb://localhost:27017");
-            IMongoDatabase database = client.GetDatabase("Flat_test"); // is made if not already there
-
-            Measurementcollection = database.GetCollection<Measurement>("Stations"); // is made if not already there
-
-            Measurementcollection.InsertOne(new Measurement(dateTime, lane, speed, length, type, gap, wrongDir, display, flash, stationName));
+            IMongoCollection<Measurement> collection = conn.ConnectToMeasurement("Flat_test", "Stations");
+            collection.InsertOne(new Measurement(dateTime, lane, speed, length, type, gap, wrongDir, display, flash, stationName));
         }
     }
 }

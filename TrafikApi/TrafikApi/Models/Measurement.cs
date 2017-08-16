@@ -7,7 +7,7 @@ namespace TrafikApi.Models
 {
     public class Measurement
     {
-        public string dateTime { get; set; }
+        public DateTime dateTime { get; set; }
         public string lane { get; set; }
         public string speed { get; set; }
         public string length { get; set; }
@@ -18,7 +18,7 @@ namespace TrafikApi.Models
         public string flash { get; set; }
         public string stationName { get; set; }
 
-        public Measurement(string dateTime, string lane, string speed, string length, string type, string gap, string wrongDir, string display, string flash, string stationName)
+        public Measurement(DateTime dateTime, string lane, string speed, string length, string type, string gap, string wrongDir, string display, string flash, string stationName)
         {
             this.dateTime = dateTime;
             this.lane = lane;
