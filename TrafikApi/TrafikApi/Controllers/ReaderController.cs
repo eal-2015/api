@@ -39,6 +39,16 @@ namespace TrafikApi.Controllers
 
             return Json(collection.Find(filt).ToList());
         }
-        
+        [HttpGet]
+        public JsonResult GetMeasurementsBetweenDates(DateTime from, DateTime to)
+        {
+            //TODO Kald databasen og få elementer ud og send dem over til python
+            List<string> input = new List<string>();
+            IMongoCollection<Measurement> collection = conn.ConnectToMeasurement("Flat_test", "Measurement");
+            
+            var result = collection.Find(Builders<Measurement>.Filter.Where(x => x.dateTime > from && x.dateTime < to)).ToList();
+
+            return Json(result);
+        }
     }
 }
