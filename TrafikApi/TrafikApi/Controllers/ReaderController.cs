@@ -13,38 +13,31 @@ namespace TrafikApi.Controllers
     [Route("api/[controller]")]
     public class ReaderController : Controller
     {
-        IMongoCollection<Station> collection;
-
+        Mongo conn;
         // GET: api/reader
         [HttpGet]
-        public JsonResult Get()
+        public JsonResult GetAllStations() //Have to be changed so it get parsed in the string for connection
         {
-            Connect("mongodb://localhost:27017", "Embedded_test", "Stations"); //has to be changed so it gets parsed in the strings it needs for this
+            IMongoCollection<Station> collection = conn.ConnectToStation("Flat_test", "Stations");
             var filt = Builders<Station>.Filter.Where(m => m.name != null);
-            List<Station> stations = collection.Find(filt).ToList();
-
-            //return Json(stations);
-
-            /*
-             * Could also just return the list of stations as shown above.
-             * But if our DB is embedded then you also get all the measurements of each stations
-             */
-
-            string[][] temp = new string[stations.Count][];
-
-            for (int i = 0; i < stations.Count; i++)
-            {
-                temp[i] = new string[] { stations[i].name, stations[i].areacode.ToString() };
-            }
-            return Json(temp);
+            
+            return Json(collection.Find(filt).ToList());
         }
-
-        public void Connect(string connectionString, string databaseName, string collectionName) //Should be set a the Contructor if it gets its own class
+        [HttpGet]
+        public JsonResult GetStation(string name) //Have to be changed so it get parsed in the string for connection
         {
-            MongoClient client = new MongoClient(connectionString);
-            IMongoDatabase database = client.GetDatabase(databaseName); // is made if not already there
+            IMongoCollection<Station> collection = conn.ConnectToStation("Flat_test", "Stations");
+            var filt = Builders<Station>.Filter.Where(m => m.name == name);
 
-            collection = database.GetCollection<Station>(collectionName); // is made if not already there
+            return Json(collection.Find(filt).ToList());
+        }
+        [HttpGet]
+        public JsonResult GetAllMeasurementOnStation(string station) //Have to be changed so it get parsed in the string for connection
+        {
+            IMongoCollection<Measurement> collection = conn.ConnectToMeasurement("Flat_test", "Measurement");
+            var filt = Builders<Measurement>.Filter.Where(m => m.stationName == station);
+
+            return Json(collection.Find(filt).ToList());
         }
         
     }
