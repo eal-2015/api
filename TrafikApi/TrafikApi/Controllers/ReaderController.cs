@@ -19,7 +19,7 @@ namespace TrafikApi.Controllers
         [ActionName("GetAllStations")]
         public JsonResult GetAllStations() //Have to be changed so it get parsed in the string for connection
         {
-            IMongoCollection<Station> collection = conn.ConnectToStation("Flat_test", "Stations");
+            IMongoCollection<Station> collection = conn.ConnectToStation("Trafik_DB", "Stations");
             var filt = Builders<Station>.Filter.Where(m => m.name != null);
 
             return Json(collection.Find(filt).ToList());
