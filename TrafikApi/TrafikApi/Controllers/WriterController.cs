@@ -29,7 +29,7 @@ namespace TrafikApi.Controllers
         public void InsertMeasurement(DateTime dateTime, string lane, string speed, string length, string type, string gap, string wrongDir, string display, string flash, string stationName)
         {
             IMongoCollection<Measurement> collection = conn.ConnectToMeasurement("Trafik_DB", "Measurements");
-            collection.InsertOne(new Measurement(dateTime, lane, speed, length, type, gap, wrongDir, display, flash, stationName));
+            collection.InsertOne(new Measurement(dateTime, int.Parse(lane), int.Parse(speed), int.Parse(length), int.Parse(type), int.Parse(gap), int.Parse(wrongDir), int.Parse(display), int.Parse(flash), stationName));
         }
         [HttpGet]
         [ActionName("SaveMeasurements")]

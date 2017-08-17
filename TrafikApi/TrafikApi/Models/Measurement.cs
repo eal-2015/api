@@ -10,23 +10,23 @@ namespace TrafikApi.Models
     public class Measurement
     {
         public DateTime dateTime { get; set; }
-        public string lane { get; set; }
-        public string speed { get; set; }
-        public string length { get; set; }
-        public string type { get; set; }
-        public string gap { get; set; }
-        public string wrongDir { get; set; }
-        public string display { get; set; }
-        public string flash { get; set; }
+        public int lane { get; set; }
+        public int speed { get; set; }
+        public int length { get; set; }
+        public int carType { get; set; }
+        public int gap { get; set; }
+        public int wrongDir { get; set; }
+        public int display { get; set; }
+        public int flash { get; set; }
         public string stationName { get; set; }
 
-        public Measurement(DateTime dateTime, string lane, string speed, string length, string type, string gap, string wrongDir, string display, string flash, string stationName)
+        public Measurement(DateTime dateTime, int lane, int speed, int length, int carType, int gap, int wrongDir, int display, int flash, string stationName)
         {
             this.dateTime = dateTime;
             this.lane = lane;
             this.speed = speed;
             this.length = length;
-            this.type = type;
+            this.carType = carType;
             this.gap = gap;
             this.wrongDir = wrongDir;
             this.display = display;
