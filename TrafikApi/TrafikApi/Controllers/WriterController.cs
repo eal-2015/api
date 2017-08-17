@@ -56,7 +56,7 @@ namespace TrafikApi.Controllers
                 count++;
             }
             ;*/
-            IMongoCollection<Measurement> collection = conn.ConnectToMeasurement("Flat_test", "Measurements");
+            IMongoCollection<Measurement> collection = conn.ConnectToMeasurement("Trafik_DB", "Measurements");
             foreach (var item in inpmeasurements)
             {
                 collection.InsertOne(item);
