@@ -19,14 +19,14 @@ namespace TrafikApi.Controllers
         [HttpGet]
         public void InsertStation(string name, int areacode)
         {
-            IMongoCollection<Station> collection = conn.ConnectToStation("Flat_test", "Stations");
+            IMongoCollection<Station> collection = conn.ConnectToStation("Trafik_DB", "Stations");
             collection.InsertOne(new Station(name, areacode));
         }
         // POST api/values
         [HttpPost]
         public void InsertMeasurement(DateTime dateTime, string lane, string speed, string length, string type, string gap, string wrongDir, string display, string flash, string stationName)
         {
-            IMongoCollection<Measurement> collection = conn.ConnectToMeasurement("Flat_test", "Stations");
+            IMongoCollection<Measurement> collection = conn.ConnectToMeasurement("Trafik_DB", "Measurements");
             collection.InsertOne(new Measurement(dateTime, lane, speed, length, type, gap, wrongDir, display, flash, stationName));
         }
         public void SaveMeasurements(List<Measurement> inpmeasurements)
