@@ -10,20 +10,22 @@ using TrafikApi.Models;
 
 namespace TrafikApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     public class ReaderController : Controller
     {
-        Mongo conn;
+        Mongo conn = new Mongo();
         // GET: api/reader
         [HttpGet]
+        [ActionName("GetAllStations")]
         public JsonResult GetAllStations() //Have to be changed so it get parsed in the string for connection
         {
             IMongoCollection<Station> collection = conn.ConnectToStation("Trafik_DB", "Stations");
             var filt = Builders<Station>.Filter.Where(m => m.name != null);
-            
+
             return Json(collection.Find(filt).ToList());
         }
         [HttpGet]
+        [ActionName("GetStation")]
         public JsonResult GetStation(string name) //Have to be changed so it get parsed in the string for connection
         {
             IMongoCollection<Station> collection = conn.ConnectToStation("Trafik_DB", "Stations");
@@ -32,6 +34,7 @@ namespace TrafikApi.Controllers
             return Json(collection.Find(filt).ToList());
         }
         [HttpGet]
+        [ActionName("GetAllMeasurementOnStation")]
         public JsonResult GetAllMeasurementOnStation(string station) //Have to be changed so it get parsed in the string for connection
         {
             IMongoCollection<Measurement> collection = conn.ConnectToMeasurement("Trafik_DB", "Measurement");
@@ -40,12 +43,13 @@ namespace TrafikApi.Controllers
             return Json(collection.Find(filt).ToList());
         }
         [HttpGet]
+        [ActionName("GetMeasurementsBetweenDates")]
         public JsonResult GetMeasurementsBetweenDates(DateTime from, DateTime to)
         {
             //TODO Kald databasen og få elementer ud og send dem over til python
             List<string> input = new List<string>();
             IMongoCollection<Measurement> collection = conn.ConnectToMeasurement("Trafik_DB", "Measurement");
-            
+
             var result = collection.Find(Builders<Measurement>.Filter.Where(x => x.dateTime > from && x.dateTime < to)).ToList();
 
             return Json(result);
