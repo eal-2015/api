@@ -37,7 +37,7 @@ namespace TrafikApi.Controllers
         [ActionName("GetAllMeasurementOnStation")]
         public JsonResult GetAllMeasurementOnStation(string station) //Have to be changed so it get parsed in the string for connection
         {
-            IMongoCollection<Measurement> collection = conn.ConnectToMeasurement("Trafik_DB", "Measurement");
+            IMongoCollection<Measurement> collection = conn.ConnectToMeasurement("Trafik_DB", "Measurements");
             var filt = Builders<Measurement>.Filter.Where(m => m.stationName == station);
 
             return Json(collection.Find(filt).ToList());
@@ -48,7 +48,7 @@ namespace TrafikApi.Controllers
         {
             //TODO Kald databasen og få elementer ud og send dem over til python
             List<string> input = new List<string>();
-            IMongoCollection<Measurement> collection = conn.ConnectToMeasurement("Trafik_DB", "Measurement");
+            IMongoCollection<Measurement> collection = conn.ConnectToMeasurement("Trafik_DB", "Measurements");
 
             var result = collection.Find(Builders<Measurement>.Filter.Where(x => x.dateTime > from && x.dateTime < to)).ToList();
 
