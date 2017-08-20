@@ -23,22 +23,40 @@ namespace TrafikApi.Controllers
             int output = 0;
             try
             {
-            IMongoCollection<Measurement> collection = conn.ConnectToMeasurement("Trafik_DB", "Measurements");
-            List<Measurement> result = collection.Find(Builders<Measurement>.Filter.Where(x => x.dateTime > DateTime.Parse(from) && x.dateTime < DateTime.Parse(to))).ToList();
+                IMongoCollection<Measurement> collection = conn.ConnectToMeasurement("Trafik_DB", "Measurements");
+                List<Measurement> result = collection.Find(Builders<Measurement>.Filter.Where(x => x.dateTime > DateTime.Parse(from) && x.dateTime < DateTime.Parse(to))).ToList();
 
-            Json json = new Json();
+                Json json = new Json();
 
-            string arguments = "'";
+                string arguments = "'";
 
-            foreach (var item in result)
-            {
-                arguments += item.ToPython();
-            }
-                output = int.Parse(json.CallPythonInCSharp(@"E:\Scripts\HowManyMeasurements.py", @"C:\Program Files\Python36", arguments)); 
+                foreach (var item in result)
+                {
+                    arguments += item.ToPython();
+                }
+                arguments += "'";
+                output = int.Parse(json.CallPythonInCSharp("test.py", arguments));
             }
             catch (Exception e)
             {
-                System.IO.File.WriteAllText("test3.txt", e.Message);
+                System.IO.File.WriteAllText("test3.txt", e.InnerException.Message);
+            }
+            return output;
+        }
+        [HttpGet]
+        [ActionName("TestJson")]
+        public int TestJsonMethod()
+        {
+            int output = 0;
+            try
+            {
+                Json json = new Json();
+
+                output = int.Parse(json.CallPythonInCSharp("test.py", ""));
+            }
+            catch (Exception e)
+            {
+                System.IO.File.WriteAllText("test3.txt", e.InnerException.Message);
             }
             return output;
         }
