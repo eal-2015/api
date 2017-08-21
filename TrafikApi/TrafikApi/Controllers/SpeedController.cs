@@ -18,37 +18,15 @@ namespace TrafikApi.Controllers
         // GET: api/speed/Measurements?from="2017-05-01 18:00:12"&to="2017-05-01 18:00:12"&carType=2&lane=1
         [HttpGet]
         [ActionName("Measurements")]
-        public JsonResult HowManyMeasurements(string from, string to, int carType, int lane)
+        public string HowManyMeasurements(string from, string to, int carType, int lane)
         {
-            string result = "";
-            try
-            {
-                Json json = new Json();
-
-                result = json.CallPythonInCSharp("test.py", "'" + from + "' '" + to + "' '" + carType + "' '" + lane + "'");
-            }
-            catch (Exception e)
-            {
-                System.IO.File.WriteAllText("test3.txt", e.InnerException.Message);
-            }
-            return Json(result);
+            return new Json().CallPythonInCSharp("HowManyMeasurements.py", "'" + from + "' '" + to + "' '" + carType + "' '" + lane + "'");
         }
         [HttpGet]
         [ActionName("TestJson")]
         public int TestJsonMethod()
         {
-            int output = 0;
-            try
-            {
-                Json json = new Json();
-
-                output = int.Parse(json.CallPythonInCSharp("test.py", ""));
-            }
-            catch (Exception e)
-            {
-                System.IO.File.WriteAllText("test3.txt", e.InnerException.Message);
-            }
-            return output;
+            return int.Parse(new Json().CallPythonInCSharp("test.py", ""));
         }
     }
 }
