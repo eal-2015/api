@@ -22,7 +22,7 @@ namespace TrafikApi.Utility
                 start.RedirectStandardError = true;
                 start.CreateNoWindow = false;
                 start.WorkingDirectory = @"C:\Program Files\PythonScripts\Scripts";
-                start.FileName = @"C:\Program Files\Python36\python.exe";
+                start.FileName = @"C:\Program Files\Anaconda3\python.exe";
 
                 using (Process process = Process.Start(start))
                 {
