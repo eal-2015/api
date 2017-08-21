@@ -22,21 +22,21 @@ namespace TrafikApi.Controllers
         {
             return Json(new Json().CallPythonInCSharp("HowManyMeasurements.py", "'" + from + "' '" + to + "' '" + carType + "' '" + lane + "'"));
         }
-        // GET: http://adm-trafik-01.odknet.dk/api/speed/Measurements?from=2017-07-18%2018:50:12&to=2017-07-20%2019:50:12&carType=2&lane=2
+        // GET: http://adm-trafik-01.odknet.dk/api/speed/GetMax?from=2017-07-18%2018:50:12&to=2017-07-20%2019:50:12&carType=2&lane=2
         [HttpGet]
         [ActionName("GetMax")]
         public JsonResult GetMax(string from, string to, int carType, int lane)
         {
             return Json(new Json().CallPythonInCSharp("GetMax.py", "'" + from + "' '" + to + "' '" + carType + "' '" + lane + "'"));
         }
-        // GET: http://adm-trafik-01.odknet.dk/api/speed/Measurements?from=2017-07-18%2018:50:12&to=2017-07-20%2019:50:12&carType=2&lane=2
+        // GET: http://adm-trafik-01.odknet.dk/api/speed/GetMin?from=2017-07-18%2018:50:12&to=2017-07-20%2019:50:12&carType=2&lane=2
         [HttpGet]
         [ActionName("GetMin")]
         public JsonResult GetMin(string from, string to, int carType, int lane)
         {
             return Json(new Json().CallPythonInCSharp("GetMin.py", "'" + from + "' '" + to + "' '" + carType + "' '" + lane + "'"));
         }
-        // GET: http://adm-trafik-01.odknet.dk/api/speed/Measurements?from=2017-07-18%2018:50:12&to=2017-07-20%2019:50:12&carType=2&lane=2
+        // GET: http://adm-trafik-01.odknet.dk/api/speed/MeasureAvgSpeed?from=2017-07-18%2018:50:12&to=2017-07-20%2019:50:12&carType=2&lane=2
         [HttpGet]
         [ActionName("MeasureAvgSpeed")]
         public JsonResult MeasureAvgSpeed(string from, string to, int carType, int lane)
