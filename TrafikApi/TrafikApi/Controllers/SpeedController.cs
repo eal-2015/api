@@ -18,9 +18,9 @@ namespace TrafikApi.Controllers
         // GET: api/speed/Measurements?from="2017-05-01 18:00:12"&to="2017-05-01 18:00:12"&carType=2&lane=1
         [HttpGet]
         [ActionName("Measurements")]
-        public string HowManyMeasurements(string from, string to, int carType, int lane)
+        public JsonResult HowManyMeasurements(string from, string to, int carType, int lane)
         {
-            return new Json().CallPythonInCSharp("HowManyMeasurements.py", "'" + from + "' '" + to + "' '" + carType + "' '" + lane + "'");
+            return Json(new Json().CallPythonInCSharp("HowManyMeasurements.py", "'" + from + "' '" + to + "' '" + carType + "' '" + lane + "'"));
         }
         [HttpGet]
         [ActionName("TestJson")]
