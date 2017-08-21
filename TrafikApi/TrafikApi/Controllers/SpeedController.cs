@@ -15,7 +15,7 @@ namespace TrafikApi.Controllers
     {
         Mongo conn = new Mongo();
 
-        // GET: api/speed/Measurements?from="2017-05-01 18:00:12"&to="2017-05-01 18:00:12"&carType=2&lane=1
+        // GET: http://adm-trafik-01.odknet.dk/api/speed/Measurements?from=2017-07-18%2018:50:12&to=2017-07-20%2019:50:12&carType=2&lane=2
         [HttpGet]
         [ActionName("Measurements")]
         public JsonResult HowManyMeasurements(string from, string to, int carType, int lane)
