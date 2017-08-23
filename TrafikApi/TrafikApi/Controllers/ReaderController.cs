@@ -14,7 +14,7 @@ namespace TrafikApi.Controllers
     public class ReaderController : Controller
     {
         Mongo conn = new Mongo();
-        // GET: api/reader
+        // GET: http://adm-trafik-01.odknet.dk:1000/api/Reader/GetAllStations
         [HttpGet]
         [ActionName("GetAllStations")]
         public JsonResult GetAllStations() //Have to be changed so it get parsed in the string for connection
@@ -24,6 +24,7 @@ namespace TrafikApi.Controllers
 
             return Json(collection.Find(filt).ToList());
         }
+        // GET: http://adm-trafik-01.odknet.dk:1000/api/reader/GetStation?name=Falen km 1,569
         [HttpGet]
         [ActionName("GetStation")]
         public JsonResult GetStation(string name) //Have to be changed so it get parsed in the string for connection
@@ -33,6 +34,7 @@ namespace TrafikApi.Controllers
 
             return Json(collection.Find(filt).ToList());
         }
+        // GET: http://adm-trafik-01.odknet.dk:1000/api/reader/GetAllMeasurementOnStation?station=Falen km 1,569
         [HttpGet]
         [ActionName("GetAllMeasurementOnStation")]
         public JsonResult GetAllMeasurementOnStation(string station) //Have to be changed so it get parsed in the string for connection
@@ -42,6 +44,7 @@ namespace TrafikApi.Controllers
 
             return Json(collection.Find(filt).ToList());
         }
+        // GET: http://adm-trafik-01.odknet.dk:1000/api/reader/GetMeasurementsBetweenDates?from=2017-07-08%2000:00:00&to=2017-07-10%2000:00:00
         [HttpGet]
         [ActionName("GetMeasurementsBetweenDates")]
         public JsonResult GetMeasurementsBetweenDates(DateTime from, DateTime to)
