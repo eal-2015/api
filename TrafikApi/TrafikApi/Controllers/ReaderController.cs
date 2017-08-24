@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Cors;
 namespace TrafikApi.Controllers
 {
     [Route("api/[controller]/[action]")]
-    [EnableCors("AllowSpecificOrigin")]
+    [EnableCors("CorsAllowAllFix")]
     public class ReaderController : Controller
     {
         Mongo conn = new Mongo();

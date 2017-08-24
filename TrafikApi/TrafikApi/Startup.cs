@@ -32,7 +32,7 @@ namespace TrafikApi
             services.AddMvc();
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowSpecificOrigin", builder =>
+                options.AddPolicy("CorsAllowAllFix", builder =>
                 {
                     builder.AllowAnyOrigin();
                 });
@@ -46,7 +46,7 @@ namespace TrafikApi
             loggerFactory.AddDebug();
 
             app.UseMvc();
-            app.UseCors("AllowSpecificOrigin");
+            app.UseCors("CorsAllowAllFix");
         }
     }
 }
