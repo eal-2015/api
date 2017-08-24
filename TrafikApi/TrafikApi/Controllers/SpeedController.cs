@@ -7,10 +7,12 @@ using TrafikApi.Models;
 using MongoDB.Driver;
 using TrafikApi.Utility;
 using System.IO;
+using Microsoft.AspNetCore.Cors;
 
 namespace TrafikApi.Controllers
 {
     [Route("api/[controller]/[action]")]
+    [EnableCors("CorsAllowAllFix")]
     public class SpeedController : Controller
     {
         Mongo conn = new Mongo();

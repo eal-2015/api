@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
+
 namespace TrafikApi
 {
     public class Startup
@@ -29,6 +30,13 @@ namespace TrafikApi
         {
             // Add framework services.
             services.AddMvc();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsAllowAllFix", builder =>
+                {
+                    builder.AllowAnyOrigin();
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +46,7 @@ namespace TrafikApi
             loggerFactory.AddDebug();
 
             app.UseMvc();
+            app.UseCors("CorsAllowAllFix");
         }
     }
 }

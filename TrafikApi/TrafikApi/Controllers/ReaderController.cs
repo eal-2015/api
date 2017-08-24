@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using TrafikApi.Models;
+using Microsoft.AspNetCore.Cors;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace TrafikApi.Controllers
 {
     [Route("api/[controller]/[action]")]
+    [EnableCors("CorsAllowAllFix")]
     public class ReaderController : Controller
     {
         Mongo conn = new Mongo();
