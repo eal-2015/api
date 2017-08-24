@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafikApi", "TrafikApi\TrafikApi.csproj", "{D51ED710-694B-43F5-BA35-99868EA75F01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrafikApi", "TrafikApi\TrafikApi.csproj", "{D51ED710-694B-43F5-BA35-99868EA75F01}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API.Core", "API.Core\API.Core.csproj", "{EFB1D047-1F93-49B3-916C-60C2365A4F6D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Widget.Core", "Widget.Core\Widget.Core.csproj", "{81ABB156-DC2F-4012-8FB1-95FD1C2D966B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.API", "Data.API\Data.API.csproj", "{88ED04E5-141C-4712-9DF5-B06058B0CB1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Widget.API", "Widget.API\Widget.API.csproj", "{D1BFC70C-58D9-45B4-B6C8-68503DA7DD9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{D51ED710-694B-43F5-BA35-99868EA75F01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D51ED710-694B-43F5-BA35-99868EA75F01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D51ED710-694B-43F5-BA35-99868EA75F01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFB1D047-1F93-49B3-916C-60C2365A4F6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFB1D047-1F93-49B3-916C-60C2365A4F6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFB1D047-1F93-49B3-916C-60C2365A4F6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFB1D047-1F93-49B3-916C-60C2365A4F6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81ABB156-DC2F-4012-8FB1-95FD1C2D966B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81ABB156-DC2F-4012-8FB1-95FD1C2D966B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81ABB156-DC2F-4012-8FB1-95FD1C2D966B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81ABB156-DC2F-4012-8FB1-95FD1C2D966B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88ED04E5-141C-4712-9DF5-B06058B0CB1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88ED04E5-141C-4712-9DF5-B06058B0CB1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88ED04E5-141C-4712-9DF5-B06058B0CB1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88ED04E5-141C-4712-9DF5-B06058B0CB1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1BFC70C-58D9-45B4-B6C8-68503DA7DD9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1BFC70C-58D9-45B4-B6C8-68503DA7DD9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1BFC70C-58D9-45B4-B6C8-68503DA7DD9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1BFC70C-58D9-45B4-B6C8-68503DA7DD9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

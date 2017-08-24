@@ -33,5 +33,10 @@ namespace TrafikApi.Models
             this.flash = flash;
             this.stationName = stationName;
         }
+
+        public string ToPython()
+        {
+            return dateTime.ToString() + "," + lane + "," + speed + "," + length + "," + carType + "," + gap + "," + wrongDir + "," + display + "," + flash + ";";
+        }
     }
 }
