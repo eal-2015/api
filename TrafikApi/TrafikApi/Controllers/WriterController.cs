@@ -18,10 +18,10 @@ namespace TrafikApi.Controllers
         // POST api/values
         [HttpGet]
         [ActionName("InsertStation")]
-        public void InsertStation(string name, int areacode)
+        public void InsertStation(int areacode, string name, DateTime installed, string equipmentType, double latitude, double longitude)
         {
             IMongoCollection<Station> collection = conn.ConnectToStation("Trafik_DB", "Stations");
-            collection.InsertOne(new Station(name, areacode));
+            collection.InsertOne(new Station(areacode, name, installed, equipmentType, latitude, longitude));
         }
         // POST api/values
         [HttpPost]
