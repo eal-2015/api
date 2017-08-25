@@ -45,6 +45,17 @@ namespace TrafikApi.Controllers
         {
             return Json(new Json().CallPythonInCSharp("MeasureAvgSpeed.py", "'" + from + "' '" + to + "' '" + carType + "' '" + lane + "'"));
         }
+
+        // GET: http://adm-trafik-01.odknet.dk:1000/api/speed/MeasureAvgSpeed?from=2017-07-18%2018:50:12&to=2017-07-20%2019:50:12&carType=2&lane=2
+        [HttpGet]
+        [ActionName("AverageOfDays")]
+        public JsonResult MeasureAvgSpeed(string from, string to, int carType, int lane)
+        {
+            return Json(new Json().CallPythonInCSharp("AverageOfDays.py", "'" + from + "' '" + to + "' '" + carType + "' '" + lane + "'"));
+        }
+
+
+
         [HttpGet]
         [ActionName("TestJson")]
         public int TestJsonMethod()
