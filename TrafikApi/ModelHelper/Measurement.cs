@@ -36,3 +36,4 @@ namespace ModelHelper
             return dateTime.ToString() + "," + lane + "," + speed + "," + length + "," + carType + "," + gap + "," + wrongDir + "," + display + "," + flash + ";";
         }
     }
+}
