@@ -18,39 +18,24 @@ namespace AverageSpeed.Controllers
         [ActionName("GetMeasurementsBetweenDates")]
         public JsonResult GetMeasurementsBetweenDates(DateTime from, DateTime to, string station)
         {
-            Dictionary<string, long> resultMeasurements = new Dictionary<string, long>();
-            Dictionary<string, long> resultCount = new Dictionary<string, long>();
-            Dictionary<string, long> result = new Dictionary<string, long>();
-
+            long measurements = 0;
             try
             {
                 IMongoCollection<Measurement> collection = conn.ConnectToMeasurement("Trafik_DB", "Measurements");
 
                 var output = collection.Find(Builders<Measurement>.Filter.Text(station) & Builders<Measurement>.Filter.Where(x => x.dateTime > from && x.dateTime < to)).ToList();
-
-                foreach (Measurement measurement in output)
+                
+                for (int i = 0; i < output.Count; i++)
                 {
-                    if (resultMeasurements.ContainsKey(measurement.stationName))
-                    {
-                        resultMeasurements[measurement.stationName] += measurement.speed;
-                        resultCount[measurement.stationName] += 1;
-                    }
-                    else
-                    {
-                        resultMeasurements.Add(measurement.stationName, measurement.speed);
-                        resultCount.Add(measurement.stationName, 1);
-                    }
+                    measurements += output[i].speed;
                 }
-                for (int i = 0; i < resultMeasurements.Count; i++)
-                {
-                    result.Add(resultMeasurements.ElementAt(i).Key, resultMeasurements.ElementAt(i).Value / resultCount.ElementAt(i).Value);
-                }
+                measurements = measurements / output.Count;
             }
             catch (Exception e)
             {
                 System.IO.File.WriteAllText("Error.txt", e.Message);
             }
-            return Json(result);
+            return Json(measurements);
         }
     }
 }
