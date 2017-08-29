@@ -15,6 +15,7 @@ namespace TrafikApi.Controllers
     [EnableCors("CorsAllowAllFix")]
     public class ReaderController : Controller
     {
+        //var output = collection.Find(Builders<Measurement>.Filter.Text(station) & Builders<Measurement>.Filter.Where(x => x.dateTime > from && x.dateTime < to)).ToList();
         Mongo conn = new Mongo();
         // GET: http://adm-trafik-01.odknet.dk:1000/api/Reader/GetAllStations
         [HttpGet]
@@ -32,7 +33,7 @@ namespace TrafikApi.Controllers
         public JsonResult GetStation(string name) //Have to be changed so it get parsed in the string for connection
         {
             IMongoCollection<Station> collection = conn.ConnectToStation("Trafik_DB", "Stations");
-            var filt = Builders<Station>.Filter.Where(m => m.name == name);
+            var filt = Builders<Station>.Filter.Text(name);
 
             return Json(collection.Find(filt).ToList());
         }
@@ -42,7 +43,7 @@ namespace TrafikApi.Controllers
         public JsonResult GetAllMeasurementOnStation(string station) //Have to be changed so it get parsed in the string for connection
         {
             IMongoCollection<Measurement> collection = conn.ConnectToMeasurement("Trafik_DB", "Measurements");
-            var filt = Builders<Measurement>.Filter.Where(m => m.stationName == station);
+            var filt = Builders<Measurement>.Filter.Text(station);
 
             return Json(collection.Find(filt).ToList());
         }
