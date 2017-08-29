@@ -8,6 +8,6 @@ namespace API.Core.Services
     {
         string Name { get; }
         string Url { get; }
-        string Test
+        string Test { get; }
     }
 }

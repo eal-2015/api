@@ -4,7 +4,7 @@ using System.Text;
 
 namespace API.Core.Services
 {
-    class ServiceModel: IServiceModel
+    class ServiceModel
     {
     }
 }
