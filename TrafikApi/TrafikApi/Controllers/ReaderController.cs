@@ -15,7 +15,6 @@ namespace TrafikApi.Controllers
     [EnableCors("CorsAllowAllFix")]
     public class ReaderController : Controller
     {
-        //var output = collection.Find(Builders<Measurement>.Filter.Text(station) & Builders<Measurement>.Filter.Where(x => x.dateTime > from && x.dateTime < to)).ToList();
         Mongo conn = new Mongo();
         // GET: http://adm-trafik-01.odknet.dk:1000/api/Reader/GetAllStations
         [HttpGet]
