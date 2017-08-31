@@ -19,7 +19,7 @@ namespace ModelHelper
 
         public IMongoCollection<Measurement> ConnectToMeasurement(string databaseName, string collectionName)
         {
-            MongoClient client = new MongoClient("mongodb://localhost:27017");
+            MongoClient client = new MongoClient("mongodb://10.190.80.25:27017");
             IMongoDatabase database = client.GetDatabase(databaseName); // is made if not already there
             return database.GetCollection<Measurement>(collectionName); // is made if not already there
         }

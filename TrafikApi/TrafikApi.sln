@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.26730.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrafikApi", "TrafikApi\TrafikApi.csproj", "{D51ED710-694B-43F5-BA35-99868EA75F01}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StationMapApi", "StationMapApi\StationMapApi.csproj", "{862AA925-B105-4118-BF8A-8B36B0E27DC9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AverageSpeed", "AverageSpeed\AverageSpeed.csproj", "{96293BEC-CD46-4763-ACB3-E20E072DD403}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarTypeHeatMapApi", "CarTypeHeatMapApi\CarTypeHeatMapApi.csproj", "{CF3FC153-E622-4C09-A33B-9BD80E82F45D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,8 +35,15 @@ Global
 		{96293BEC-CD46-4763-ACB3-E20E072DD403}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96293BEC-CD46-4763-ACB3-E20E072DD403}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96293BEC-CD46-4763-ACB3-E20E072DD403}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF3FC153-E622-4C09-A33B-9BD80E82F45D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF3FC153-E622-4C09-A33B-9BD80E82F45D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF3FC153-E622-4C09-A33B-9BD80E82F45D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF3FC153-E622-4C09-A33B-9BD80E82F45D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B604837E-3759-445A-8B53-9B049199D460}
 	EndGlobalSection
 EndGlobal
