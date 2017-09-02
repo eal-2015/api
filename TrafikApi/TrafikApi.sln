@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.8
+VisualStudioVersion = 15.0.26730.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrafikApi", "TrafikApi\TrafikApi.csproj", "{D51ED710-694B-43F5-BA35-99868EA75F01}"
 EndProject
@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StationMapApi", "StationMap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AverageSpeed", "AverageSpeed\AverageSpeed.csproj", "{96293BEC-CD46-4763-ACB3-E20E072DD403}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarTypeHeatMapApi", "CarTypeHeatMapApi\CarTypeHeatMapApi.csproj", "{CF3FC153-E622-4C09-A33B-9BD80E82F45D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarTypeHeatMapApi", "CarTypeHeatMapApi\CarTypeHeatMapApi.csproj", "{CF3FC153-E622-4C09-A33B-9BD80E82F45D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AverageSpeedHeatmapAllStations", "AverageSpeedHeatmapAllStations\AverageSpeedHeatmapAllStations.csproj", "{1219A47B-9994-440E-A45A-1F437A3E358D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{CF3FC153-E622-4C09-A33B-9BD80E82F45D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF3FC153-E622-4C09-A33B-9BD80E82F45D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF3FC153-E622-4C09-A33B-9BD80E82F45D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1219A47B-9994-440E-A45A-1F437A3E358D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1219A47B-9994-440E-A45A-1F437A3E358D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1219A47B-9994-440E-A45A-1F437A3E358D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1219A47B-9994-440E-A45A-1F437A3E358D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
