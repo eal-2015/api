@@ -50,7 +50,7 @@ namespace AverageSpeedHeatmapAllStations.Controllers
                             {
                                 Key = g.Key,
                                 avgValue = g.Average(x => x.speed)
-                            }).Project(r => new DailyStat()
+                            }).Project(r => new Result()
                             {
                                 avgValue = (int)r.avgValue,
                                 stationName = r.Key.Key
@@ -92,9 +92,9 @@ namespace AverageSpeedHeatmapAllStations.Controllers
             return Json(result);
         }
         [BsonIgnoreExtraElements]
-        private class DailyStat
+        private class Result
         {
-            public DailyStat()
+            public Result()
             {
 
             }
