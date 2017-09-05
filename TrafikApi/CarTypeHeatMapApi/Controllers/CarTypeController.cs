@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using ModelHelper;
 using MongoDB.Driver;
 using Microsoft.AspNetCore.Cors;
+using System.Diagnostics;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,15 +16,18 @@ namespace CarTypeHeatMapApi.Controllers
     [EnableCors("CorsAllowAllFix")]
     public class CarTypeController : Controller
     {
+        Stopwatch timer = new Stopwatch();
+        
         Mongo conn = new Mongo();
 
-        // GET: http://adm-trafik-01.odknet.dk:2004/api/CarType/GetCarTypes?from=2017-02-02%2000:00:00&to=2017-05-05%2000:00:00&station=Anderupvej&cartype=2
+        // GET: http://adm-trafik-01.odknet.dk:2004/api/CarType/GetCarTypes?from=2017-02-02%2000:00:00&to=2017-05-05%2000:00:00&station=Anderupvej
         [HttpGet]
         [ActionName("GetCarTypes")]
-        public JsonResult GetCarTypes(DateTime from, DateTime to, string station) //Have to be changed so it get parsed in the string for connection
+        public JsonResult GetCarTypes(DateTime from, DateTime to, int areaCode) //Have to be changed so it get parsed in the string for connection
         {
+            timer.Start();
             IMongoCollection<Measurement> collection = conn.ConnectToMeasurement("Trafik_DB", "Measurements");
-            var filt = Builders<Measurement>.Filter.Text(station) & Builders<Measurement>.Filter.Where(x => x.dateTime > from && x.dateTime < to);
+            var filt = Builders<Measurement>.Filter.Where(x => x.areaCode == areaCode) & Builders<Measurement>.Filter.Where(x => x.dateTime > from && x.dateTime < to);
             /*
              * Should add a filter to sort and count the number of each type of car
              * so it is the DB and not the script that has to do the work
