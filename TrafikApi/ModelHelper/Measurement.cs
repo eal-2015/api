@@ -15,9 +15,9 @@ namespace ModelHelper
         public int wrongDir { get; set; }
         public int display { get; set; }
         public int flash { get; set; }
-        public string stationName { get; set; }
+        public int areaCode { get; set; }
 
-        public Measurement(DateTime dateTime, int lane, int speed, int length, int carType, int gap, int wrongDir, int display, int flash, string stationName)
+        public Measurement(DateTime dateTime, int lane, int speed, int length, int carType, int gap, int wrongDir, int display, int flash, int areaCode)
         {
             this.dateTime = dateTime;
             this.lane = lane;
@@ -28,7 +28,7 @@ namespace ModelHelper
             this.wrongDir = wrongDir;
             this.display = display;
             this.flash = flash;
-            this.stationName = stationName;
+            this.areaCode = areaCode;
         }
 
         public string ToPython()

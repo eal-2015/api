@@ -24,7 +24,24 @@ namespace CarTypeHeatMapApi.Controllers
             IMongoCollection<Station> collection = conn.ConnectToStation("Trafik_DB", "Stations");
             var filt = Builders<Station>.Filter.Where(m => m.name != null);
 
-            return Json(collection.Find(filt).ToList());
+            List<Station> stations = collection.Find(filt).ToList();
+
+            List<Result> result = new List<Result>();
+            foreach (Station item in stations)
+            {
+                result.Add(new Result(item.name, item.areacode));
+            }
+            return Json(result);
+        }
+    }
+    class Result
+    {
+        public string name { get; set; }
+        public int areacode { get; set; }
+        public Result(string name, int areacode)
+        {
+            this.name = name;
+            this.areacode = areacode;
         }
     }
 }
