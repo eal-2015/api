@@ -7,8 +7,9 @@ namespace AverageSpeedHeatmapAllStations.Model
 {
     public class ResultModel
     {
-        public string name { get; set; }
+        public int areaCode { get; set; }
         public int measurement { get; set; }
+        public string name { get; set; }
         public double latitude { get; set; }
         public double longitude { get; set; }
     }

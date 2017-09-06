@@ -35,7 +35,7 @@ namespace AverageSpeedHeatmapAllStations.Controllers
                 IMongoCollection<Measurement> collection = conn.ConnectToMeasurement("Trafik_DB", "Measurements");
                 IMongoCollection<Station> stations = conn.ConnectToStation("Trafik_DB", "Stations");
 
-                List<Station> result2 = stations.Find(Builders<Station>.Filter.Where(m => m.name != null)).ToList();
+                List<Station> result2 = stations.Find(Builders<Station>.Filter.Where(m => m.areacode != 0)).ToList();
 
                 try
                 {
@@ -44,7 +44,7 @@ namespace AverageSpeedHeatmapAllStations.Controllers
                             Match(x => x.dateTime < to).
                             Group(r => new
                             {
-                                Key = r.stationName
+                                Key = r.areaCode
                             },
                             g => new
                             {
@@ -53,28 +53,32 @@ namespace AverageSpeedHeatmapAllStations.Controllers
                             }).Project(r => new Result()
                             {
                                 avgValue = (int)r.avgValue,
-                                stationName = r.Key.Key
+                                areaCode = r.Key.Key
 
                             }).ToListAsync().ConfigureAwait(false);
+
+
+
                     for (int i = 0; i < output.Count; i++)
                     {
                         ResultModel resultModel = new ResultModel();
-                        resultModel.name = output[i].stationName;
+                        resultModel.areaCode = output[i].areaCode;
                         resultModel.measurement = (int)output[i].avgValue;
                         result.Add(resultModel);
                     }
 
                     foreach (var item in result2)
                     {
-                        ResultModel res = result.Find(x => x.name.Split(' ')[0] == item.name.Split(' ')[0]);
+                        ResultModel res = result.Find(x => x.areaCode == item.areacode);
                         if (res != null)
                         {
                             res.longitude = item.longitude;
                             res.latitude = item.latitude;
+                            res.name = item.name;
                         }
                         else
                         {
-                            result.Add(new ResultModel { latitude = item.latitude, longitude = item.longitude, measurement = 0, name = item.name });
+                            result.Add(new ResultModel { name = item.name, latitude = item.latitude, longitude = item.longitude, measurement = 0, areaCode = item.areacode });
                         }
                     }
                 }
@@ -103,7 +107,7 @@ namespace AverageSpeedHeatmapAllStations.Controllers
             [BsonRepresentation(BsonType.Double, AllowTruncation = true)]
             public double avgValue { get; set; }
             [BsonRepresentation(BsonType.String, AllowTruncation = true)]
-            public string stationName { get; set; }
+            public int areaCode { get; set; }
         }
     }
 }
