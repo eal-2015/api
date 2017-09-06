@@ -20,7 +20,7 @@ namespace AverageSpeed.Controllers
         // GET: http://adm-trafik-01.odknet.dk:2001/api/AverageSpeed/GetMeasurementsBetweenDates?from=2017-02-02%2000:00:00&to=2017-05-05%2000:00:00&station=Anderupvej
         [HttpGet]
         [ActionName("GetMeasurementsBetweenDates")]
-        public async Task<JsonResult> GetMeasurementsBetweenDates(DateTime from, DateTime to, string station)
+        public async Task<JsonResult> GetMeasurementsBetweenDates(DateTime from, DateTime to, string areaCode)
         {
             Stopwatch watch = new Stopwatch();
             watch.Start();
@@ -32,10 +32,10 @@ namespace AverageSpeed.Controllers
                 try
                 {
                     var output = await collection.Aggregate().
-                            Match(x => x.dateTime > from && x.dateTime < to && x.stationName == station).
+                            Match(x => x.dateTime > from && x.dateTime < to && x.areaCode == int.Parse(areaCode)).
                             Group(r => new
                             {
-                                Key = r.stationName
+                                Key = r.areaCode
                             },
                             g => new
                             {
@@ -43,7 +43,7 @@ namespace AverageSpeed.Controllers
                                 avgValue = g.Average(x => x.speed)
                             }).Project(r => new Result()
                             {
-                                stationName = r.Key.Key,
+                                areaCode = r.Key.Key,
                                 avgSpeed = r.avgValue
                                  
                             }).ToListAsync().ConfigureAwait(false);
@@ -51,13 +51,14 @@ namespace AverageSpeed.Controllers
                     if (output.Count() > 0)
                     {
                         IMongoCollection<Station> stations = conn.ConnectToStation("Trafik_DB", "Stations");
-                        var output2 = stations.Find(Builders<Station>.Filter.Text(station)).ToList();
+                        var output2 = stations.Find(Builders<Station>.Filter.Where(x=>x.areacode == int.Parse(areaCode))).ToList();
                         if (output2.Count > 0)
                         {
+                            result.name = output2[0].name;
                             result.latitude = output2[0].latitude;
                             result.longitude = output2[0].longitude;
                         }
-                        result.name = output[0].stationName;
+                        result.areaCode = output[0].areaCode;
                         result.measurement = output[0].avgSpeed;
                     }
                 }
@@ -91,7 +92,7 @@ namespace AverageSpeed.Controllers
             [BsonRepresentation(BsonType.Double, AllowTruncation = true)]
             public double lat { get; set; }
             [BsonRepresentation(BsonType.String, AllowTruncation = true)]
-            public string stationName { get; set; }
+            public int areaCode { get; set; }
         }
     }
 }
