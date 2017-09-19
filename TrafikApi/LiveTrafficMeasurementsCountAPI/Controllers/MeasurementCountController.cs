@@ -25,7 +25,9 @@ namespace LiveTrafficMeasurementsCountAPI.Controllers
         {
             IMongoCollection<Measurement> collection = conn.ConnectToMeasurement("Trafik_DB", "LiveMeasurements");
             var filt = Builders<Measurement>.Filter.Where(x => x.stationid == stationid) & Builders<Measurement>.Filter.Where(x => x.datetime > from && x.datetime < to);
+
             var CountResult = collection.Find(filt).Count();
+
 
             return Json(CountResult);
         }
