@@ -23,5 +23,7 @@ namespace ModelHelper
             IMongoDatabase database = client.GetDatabase(databaseName); // is made if not already there
             return database.GetCollection<Measurement>(collectionName); // is made if not already there
         }
+
+
     }
 }

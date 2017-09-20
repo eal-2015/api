@@ -40,8 +40,8 @@ namespace AverageSpeedHeatmapAllStations.Controllers
                 try
                 {
                     var output = await collection.Aggregate().
-                            Match(x => x.dateTime > from).
-                            Match(x => x.dateTime < to).
+                            Match(x => x.dateTime > from.ToUniversalTime()).
+                            Match(x => x.dateTime < to.ToUniversalTime()).
                             Group(r => new
                             {
                                 Key = r.areaCode
