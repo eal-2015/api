@@ -29,6 +29,13 @@ namespace LiveTrafficMeasurementsCountAPI
         {
             // Add framework services.
             services.AddMvc();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", builder =>
+                {
+                    builder.AllowAnyOrigin();
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +45,7 @@ namespace LiveTrafficMeasurementsCountAPI
             loggerFactory.AddDebug();
 
             app.UseMvc();
+            app.UseCors("AllowAll");
         }
     }
 }

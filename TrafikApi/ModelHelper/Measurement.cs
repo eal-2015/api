@@ -6,6 +6,7 @@ namespace ModelHelper
     [BsonIgnoreExtraElements]
     public class Measurement
     {
+   
         public DateTime dateTime { get; set; }
         public int lane { get; set; }
         public int speed { get; set; }

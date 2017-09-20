@@ -32,7 +32,7 @@ namespace AverageSpeed.Controllers
                 try
                 {
                     var output = await collection.Aggregate().
-                            Match(x => x.dateTime > from && x.dateTime < to && x.areaCode == int.Parse(areaCode)).
+                            Match(x => x.dateTime > from.ToUniversalTime() && x.dateTime < to.ToUniversalTime() && x.areaCode == int.Parse(areaCode)).
                             Group(r => new
                             {
                                 Key = r.areaCode

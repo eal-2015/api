@@ -24,7 +24,7 @@ namespace CarTypeHeatMapApi.Controllers
         public JsonResult GetCarTypes(DateTime from, DateTime to, int areacode) //Have to be changed so it get parsed in the string for connection
         {
             IMongoCollection<Measurement> collection = conn.ConnectToMeasurement("Trafik_DB", "Measurements");
-            var filt = Builders<Measurement>.Filter.Where(x => x.areaCode == areacode) & Builders<Measurement>.Filter.Where(x => x.dateTime > from && x.dateTime < to);
+            var filt = Builders<Measurement>.Filter.Where(x => x.areaCode == areacode) & Builders<Measurement>.Filter.Where(x => x.dateTime > from.ToUniversalTime() && x.dateTime < to.ToUniversalTime());
             /*
              * Should add a filter to sort and count the number of each type of car
              * so it is the DB and not the script that has to do the work

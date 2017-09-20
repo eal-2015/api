@@ -6,6 +6,7 @@ namespace LiveHelper
     [BsonIgnoreExtraElements]
     public class Measurement
     {
+       
         public DateTime datetime { get; set; }
         public int lane { get; set; }
         public int speed { get; set; }
