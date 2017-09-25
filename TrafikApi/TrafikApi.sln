@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+VisualStudioVersion = 15.0.26730.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrafikApi", "TrafikApi\TrafikApi.csproj", "{D51ED710-694B-43F5-BA35-99868EA75F01}"
 EndProject
@@ -15,9 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarTypeHeatMapApi", "CarTyp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AverageSpeedHeatmapAllStations", "AverageSpeedHeatmapAllStations\AverageSpeedHeatmapAllStations.csproj", "{1219A47B-9994-440E-A45A-1F437A3E358D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveTrafficMeasurementsCountAPI", "LiveTrafficMeasurementsCountAPI\LiveTrafficMeasurementsCountAPI.csproj", "{C5A4A0ED-19A6-4B4A-A1F7-29411012C805}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveTrafficMeasurementsCountAPI", "LiveTrafficMeasurementsCountAPI\LiveTrafficMeasurementsCountAPI.csproj", "{C5A4A0ED-19A6-4B4A-A1F7-29411012C805}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveHelper", "LiveHelper\LiveHelper.csproj", "{ACA52793-6016-41E5-B53F-AAC21ED3A3ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveHelper", "LiveHelper\LiveHelper.csproj", "{ACA52793-6016-41E5-B53F-AAC21ED3A3ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartAnalysis", "StartAnalysis\StartAnalysis.csproj", "{6EB6687C-09B4-4320-AD02-B0421A67FA18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{ACA52793-6016-41E5-B53F-AAC21ED3A3ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ACA52793-6016-41E5-B53F-AAC21ED3A3ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ACA52793-6016-41E5-B53F-AAC21ED3A3ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EB6687C-09B4-4320-AD02-B0421A67FA18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EB6687C-09B4-4320-AD02-B0421A67FA18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EB6687C-09B4-4320-AD02-B0421A67FA18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EB6687C-09B4-4320-AD02-B0421A67FA18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
