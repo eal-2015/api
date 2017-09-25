@@ -7,7 +7,8 @@ namespace ModelHelper.Utility
 {
     public class Json
     {
-        public string CallPythonInCSharp(string filename, string arguments)
+        public enum Environments { TrafficAnalyze, Python2_7, Python3_6 } 
+        public string CallPythonInCSharp(string filename, string arguments, Environments environment)
         {
             string result = "";
             try
@@ -20,7 +21,23 @@ namespace ModelHelper.Utility
                 start.RedirectStandardError = true;
                 start.CreateNoWindow = false;
                 start.WorkingDirectory = @"C:\Program Files\PythonScripts\Scripts";
-                start.FileName = @"C:\Program Files\Anaconda3\python.exe";
+
+                // Set the environment path, defaults to python 3.6
+                switch (environment)
+                {
+                    case Environments.TrafficAnalyze:
+                        start.FileName = @"E:\PythonScripts\envs\TrafficAnalyze\python.exe";
+                        break;
+                    case Environments.Python2_7:
+                        start.FileName = @"E:\PythonScripts\envs\Python2_7\python.exe";
+                        break;
+                    case Environments.Python3_6:
+                        start.FileName = @"E:\PythonScripts\envs\Python3_6\python.exe";
+                        break;
+                    default:
+                        start.FileName = @"E:\PythonScripts\envs\Python3_6\python.exe";
+                        break;
+                }
 
                 using (Process process = Process.Start(start))
                 {
