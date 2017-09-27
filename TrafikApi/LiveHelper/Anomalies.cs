@@ -8,7 +8,7 @@ namespace LiveHelper
     [BsonIgnoreExtraElements]
     public class Anomalies
     {
-        public int areacode;
+        public int stationid;
         public float anomaly_likelihood;
         public float anomaly_score;
         public int value;
