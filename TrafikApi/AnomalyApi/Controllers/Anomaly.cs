@@ -28,7 +28,7 @@ namespace AnomalyApi.Controllers
             {
                 Mongo mongo = new Mongo();
                 IMongoCollection<Anomalies> collection = mongo.ConnectToAnomaly("Traffic_Anomalies", "Anomalies");
-                result = collection.Find(Builders<Anomalies>.Filter.Where(x => x.date < to && x.date > from && x.areacode == areacode)).ToList();
+                result = collection.Find(Builders<Anomalies>.Filter.Where(x => x.date < to && x.date > from && x.stationid == areacode)).ToList();
             }
             catch (Exception e)
             {
